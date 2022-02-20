@@ -1,7 +1,7 @@
 version: '3'
 
 vars:
-  NAME: "consulic"
+  NAME: "cicbase"
   NETWORK: "{{.NAME}}"
   VOLUME: "{{.NAME}}"
   CONTAINER: "{{.NAME}}"
@@ -38,6 +38,7 @@ tasks:
     sources:
       - Containerfile
     cmds:
+      - task: clean
       - podman build -t {{.NAME}}:{{.VERSION}} .
     status:
       - podman inspect --type image {{.NAME}}:{{.VERSION}}
